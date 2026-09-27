@@ -1,67 +1,219 @@
-[![Android CI](https://github.com/android-fis-uan/android-sample-project/actions/workflows/android.yml/badge.svg)](https://github.com/android-fis-uan/android-sample-project/actions/workflows/android.yml)
+# PROYECTO-ELECTIVA-1
 
-# Proyecto de ejemplo de Computación Móvil
+# 🚗 ParKol — Sistema de Gestión de Parqueadero
 
-Este repositorio contiene el código fuente y la [documentación](docs) del proyecto.
+**ParKol** es una **aplicación móvil para Android** orientada a la gestión y administración de un **parqueadero público con capacidad de 50 vehículos**.
 
-## Uso del proyecto
+La aplicación permite controlar las entradas y salidas de vehículos, administrar los cupos disponibles, realizar reservas, calcular automáticamente el valor a pagar según el tiempo de permanencia, registrar pagos y consultar el historial de vehículos.
 
-Este proyecto fue probado usando el SDK de Android version 36.
+El proyecto busca facilitar la administración del parqueadero, reducir el manejo manual de la información y ofrecer una forma más organizada de controlar los espacios disponibles desde un dispositivo móvil.
 
-### Con Android Studio
+---
 
-Abra el proyecto en [Android Studio](https://developer.android.com/studio). La versión actual fue probada con Android Studio Otter 3 Feature Drop | 2025.2.3.9. Para generar el proyecto vaya a `Build` > `Build APKs`.
+## 🎯 Objetivo del proyecto
 
-### Desde la linea de comandos
+Desarrollar una **aplicación móvil para Android** que permita automatizar la gestión de un parqueadero público, facilitando el registro de vehículos, el control de cupos, las reservas y el cálculo de los pagos.
 
-> Nota: Puede usar `devcontainers`. El proyecto ya tiene una imagen pre-configurada con el SDK de Android y el CLI de GCloud.
+---
 
-Para compilar este proyecto desde la linea de comandos ejecute la tarea de generación de un APK en [Gradle](https://developer.android.com/build/building-cmdline):
+## 🚘 Funcionalidades principales
 
-```bash
-./gradlew assembleDebug
-```
+* 🚗 Registro de entrada de vehículos.
+* 🔤 Registro de placa.
+* 🚙 Selección del tipo de vehículo:
+  * 🚗 Carro
+  * 🏍️ Moto
+* 🅿️ Visualización de cupos disponibles.
+* 📅 Reserva de cupos.
+* 🚪 Registro de salida.
+* ⏱️ Cálculo automático del tiempo de permanencia.
+* 💰 Cálculo automático del valor a pagar.
+* 💳 Registro de pagos.
+* 📋 Historial de vehículos.
+* 👨‍💼 Panel de administración.
+* ⚙️ Administración de tarifas.
 
-## Pruebas
+---
 
-Puede ejecutar la aplicación instalando el APK generado en su dispositivo físico o en un emulador. También es posible ejecutar la aplicación en el [Test Lab de Firebase usando el cliente de GCloud](https://firebase.google.com/docs/test-lab/android/command-line?authuser=0&hl=en). Asegúrese de tener instalado el CLI de GCloud.
+## 🅿️ Capacidad del parqueadero
 
-Para esto siga los siguientes pasos:
+ParKol tendrá una capacidad inicial de **50 cupos**.
 
-1. Cree un nuevo proyecto en Firebase
+Para facilitar la visualización desde la aplicación móvil, los espacios podrán organizarse por **zonas**, evitando la necesidad de mostrar los 50 cupos como elementos independientes en una sola pantalla.
 
-1. Inicie su sesión en GCloud desde la linea de comandos:
+**Ejemplo de organización:**
 
-   ```bash
-   gcloud init --console-only
-   ```
+    PARKOL
+    Estado del parqueadero
 
-1. Valide los modelos de Android disponibles para sus pruebas usando el comando
+    ┌─────────────────────────────────┐
+    │ ZONA A — CARROS                 │
+    │ 🟢 🟢 🔴 🟢 🟢 🟢 🟢 🟢 🟢 🟢   │
+    │ 01 02 03 04 05 06 07 08 09 10  │
+    └─────────────────────────────────┘
 
-   ```bash
-   gcloud firebase test android models list --filter=virtual
-   ```
+    ┌─────────────────────────────────┐
+    │ ZONA B — CARROS                 │
+    │ 🟢 🔴 🟢 🟢 🟢 🟢 🟢 🟢 🟢 🟢   │
+    │ 11 12 13 14 15 16 17 18 19 20  │
+    └─────────────────────────────────┘
 
-1. Corra sus pruebas con el comando ```gcloud firebase test android run``` pasando los parámetros apropiados como el modelo y version de Android a usar. Asegúrese de estar en la carpeta donde se genero el APK (`app/builf/outputs/apk/debug`). Por ejemplo:
-   
-   Pruebas en un dispositivo físico de modelo `tokay` y con Android SDK `34` (Android 14)
+    ┌─────────────────────────────────┐
+    │ ZONA C — MOTOS                  │
+    │ 🟢 🟢 🟢 🔴 🟢 🟢 🟢 🟢 🟢 🟢   │
+    │ 21 22 23 24 25 26 27 28 29 30  │
+    └─────────────────────────────────┘
 
-   ```bash
-   gcloud firebase test android run --app app-debug.apk --type robo --device model=tokay,version=34,locale=en,orientation=portrait
-   ```
+    🟢 Disponible
+    🔴 Ocupado
+    🟡 Reservado
 
-   Pruebas en un dispositivo físico de modelo `redfin` y con Android SDK `30` (Android 11)
+---
 
-   ```bash
-   gcloud firebase test android run --app app-debug.apk --type robo --device model=redfin,version=30,locale=en,orientation=portrait
-   ```
+## 🚪 Registro de salida
 
-   Pruebas en un dispositivo virtual de modelo `MediumPhone.arm` y con Android SDK `30` (Android 11) 
+Cuando un vehículo salga del parqueadero, ParKol calculará automáticamente el tiempo de permanencia y el valor correspondiente.
 
-   ```bash
-   gcloud firebase test android run --app app-debug.apk --type robo --device model=MediumPhone.arm,version=30,locale=en,orientation=portrait
-   ```
+**Ejemplo:**
 
-## Uso de Github Actions
+    Placa: ABC123
+    Entrada: 2:15 PM
+    Salida: 5:40 PM
+    Tiempo: 3 h 25 min
+    Total: $12.000
 
-El proyecto esta configurado con Github Actions para compilar y probar de forma automática el proyecto con Firebase Test Lab, en cada push a la rama principal.
+    [ REGISTRAR PAGO ]
+
+Una vez registrado el pago, el cupo volverá a estar disponible automáticamente.
+
+---
+
+## 💰 Cálculo de tarifas
+
+El valor a pagar será calculado automáticamente teniendo en cuenta:
+
+* Tipo de vehículo.
+* Tiempo de permanencia.
+* Tarifa configurada.
+
+Las tarifas podrán ser modificadas desde el **panel de administración**.
+
+---
+
+## 📋 Historial de vehículos
+
+ParKol almacenará los registros de los vehículos que hayan utilizado el parqueadero.
+
+| Placa | Tipo | Entrada | Salida | Tiempo | Total | Estado |
+|---|---|---|---|---|---:|---|
+| ABC123 | 🚗 Carro | 2:15 PM | 5:40 PM | 3h 25min | $12.000 | Pagado |
+| XYZ789 | 🏍️ Moto | 8:10 AM | 10:30 AM | 2h 20min | $6.000 | Pagado |
+
+---
+
+## 👨‍💼 Panel de administración
+
+ParKol contará con un espacio de administración desde el cual se podrán gestionar las principales operaciones del parqueadero.
+
+El administrador podrá:
+
+* Consultar el estado de los 50 cupos.
+* Registrar entradas y salidas.
+* Administrar reservas.
+* Registrar pagos.
+* Consultar el historial.
+* Configurar tarifas.
+* Consultar estadísticas del parqueadero.
+* Gestionar la información de los vehículos.
+
+---
+
+## 🔄 Flujo principal
+
+    INICIO
+       │
+       ▼
+    Registrar vehículo
+       │
+       ▼
+    Ingresar placa
+       │
+       ▼
+    Seleccionar carro o moto
+       │
+       ▼
+    Verificar disponibilidad
+       │
+       ├───────────────┐
+       │               │
+       ▼               ▼
+    Disponible      Sin cupos
+       │               │
+       ▼               ▼
+    Asignar cupo    Mostrar aviso
+       │
+       ▼
+    Registrar entrada
+       │
+       ▼
+    Vehículo permanece
+       │
+       ▼
+    Registrar salida
+       │
+       ▼
+    Calcular tiempo y tarifa
+       │
+       ▼
+    Registrar pago
+       │
+       ▼
+    Liberar cupo
+       │
+       ▼
+      FIN
+
+---
+
+## 🛠️ Tecnologías
+
+ParKol será desarrollado como una **aplicación móvil para Android**.
+
+### Desarrollo móvil
+
+* **Kotlin**
+* **Android Studio**
+
+### Control de versiones
+
+* **Git**
+* **GitHub**
+
+---
+
+## 📌 Estado del proyecto
+
+🚧 **En desarrollo**
+
+ParKol es un proyecto de desarrollo académico que irá incorporando nuevas funcionalidades a medida que avance su construcción.
+
+---
+
+## 📄 Licencia
+
+Este proyecto ha sido desarrollado con fines **académicos y educativos**.
+
+---
+
+## 👨‍💻 Autor
+
+DEBY CAMILA AGUIRRE CARO
+YURY GABRIELA ALARCÓN BUSTOS
+JHON STIVEN CALLE CABIATIVA
+
+
+Proyecto académico — **ParKol**
+
+---
+
+⭐ **ParKol — Una forma sencilla de administrar tu parqueadero desde tu dispositivo móvil.**
