@@ -1,29 +1,23 @@
 # Diseño de interfaz de usuario
 
-La interfaz de usuario de la aplicación UANCasts esta inspirada en la interfaz de usuari de
-aplicaicones similares y en el uso de [Material Design](https://material.io/design).
+La interfaz de usuario de la aplicación ParkCol está diseñada para facilitar la gestión y consulta de espacios de parqueadero, buscando ofrecer una experiencia sencilla, clara e intuitiva para los usuarios. El diseño está basado en principios de Material Design, utilizando elementos visuales que permiten una navegación fácil y organizada dentro de la aplicación.
 
-El diseño completoe esta disponible
-en [Figma](https://www.figma.com/proto/hfzawvdC9umcC1e2z56fxR/PodcastsApp?node-id=1%3A2&scaling=scale-down)
-. Los colores a usar estar[an basados en una combinación de escalas de gris. A continuación se
-presentan las principales pantallas:
+El diseño de las principales interfaces de la aplicación se realizó utilizando Figma (https://www.figma.com/design/e3fRH3N60bgWyq6oYuXZHV/PARKCOL?node-id=0-1&t=G6Rb3ALJHNnRRSz8-1), donde se definieron la distribución de los elementos, colores, botones, campos de texto y demás componentes visuales que hacen parte de la aplicación.
 
-1. Lista de Podcasts
+La interfaz utiliza una combinación de colores y elementos gráficos relacionados con la temática de parqueaderos, manteniendo una apariencia moderna y consistente entre las diferentes pantallas.
 
-   Cuando el usuario ingrese a la aplicaicón verá una lista con los podcasts disponibles tomados
-   desde el API.
+A continuación, se presentan las principales pantallas diseñadas hasta el momento:
 
-   ![Lista de podcasts](images/PodcastList.png)
+1. Pantalla de inicio
 
-2. Episodios de un Podcast
+Cuando el usuario ingresa a la aplicación ParkCol, se presenta una pantalla de bienvenida que permite identificar la aplicación y acceder a las opciones disponibles. Esta pantalla funciona como punto de entrada para los usuarios y mantiene la identidad visual definida para la aplicación.
 
-   Al seleccionar un Podcats, el usuario verá la lista de episodios de ese podcasts y podrá
-   reproducirlos.
+<img width="565" height="1294" alt="WhatsApp Image 2026-09-03 at 9 03 02 PM" src="https://github.com/user-attachments/assets/d03edd78-d055-4360-8015-d49d625ac6ee" />
 
-   ![Lista de episodios](images/EpisodesPlaying.png)
 
-3. Búsqueda podcasts
+2. Inicio de sesión
 
-   Adicionalmente el usuario podrá buscar los Podcasts de su interes usando palabras clave.
+La pantalla de inicio de sesión permite que los usuarios registrados puedan acceder a la aplicación mediante sus credenciales. Esta interfaz contiene los campos necesarios para ingresar la información del usuario y un botón que permite realizar el proceso de autenticación.
 
-   ![Búsqueda](images/Search.png)
+<img width="703" height="1600" alt="WhatsApp Image 2026-09-03 at 9 03 02 PM (1)" src="https://github.com/user-attachments/assets/03b812d6-8d7e-4961-a9d0-d952fb48bf00" />
+
