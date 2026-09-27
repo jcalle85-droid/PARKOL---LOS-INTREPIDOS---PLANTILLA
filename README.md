@@ -207,8 +207,8 @@ Este proyecto ha sido desarrollado con fines **académicos y educativos**.
 
 ## 👨‍💻 Autor
 
-DEBY CAMILA AGUIRRE CARO
-YURY GABRIELA ALARCÓN BUSTOS
+DEBY CAMILA AGUIRRE CARO / 
+YURY GABRIELA ALARCÓN BUSTOS / 
 JHON STIVEN CALLE CABIATIVA
 
 
